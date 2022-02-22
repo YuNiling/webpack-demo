@@ -1,2 +1,2 @@
 # webpack-demo
-学习vue的demo
+学习webpack的demo
