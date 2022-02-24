@@ -1,28 +1,14 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-    entry: './src/index.js',
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'author library',
-        }),
-    ],
-    output: {
-        filename: 'webpack-numbers.js',
-        path: path.resolve(__dirname, 'dist'),
-        clean: true,
-        library: {
-            name: 'webpackNumbers',
-            type: 'umd',
+module.exports = (env) => {
+    console.log('Goal：', env.goal);
+    console.log('Production：', env.production);
+
+    return {
+        entry: './src/index.js',
+        output: {
+            filename: 'bundle.js',
+            path: path.resolve(__dirname, 'dist'),
         },
-    },
-    externals: {
-        lodash: {
-            commonjs: 'lodash',
-            commonjs2: 'lodash',
-            amd: 'lodash',
-            root: '_',
-        },
-    },
+    };
 };
