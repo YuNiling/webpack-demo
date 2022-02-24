@@ -3,31 +3,26 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
-    devtool: 'inline-source-map',
-    devServer: {
-        static: './dist',
-    },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Caching',
+            title: 'author library',
         }),
     ],
     output: {
-        filename: '[name].[contenthash].js',
+        filename: 'webpack-numbers.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+        library: {
+            name: 'webpackNumbers',
+            type: 'umd',
+        },
     },
-    optimization: {
-        moduleIds: 'deterministic',
-        runtimeChunk: 'single',
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
-                },
-            },
+    externals: {
+        lodash: {
+            commonjs: 'lodash',
+            commonjs2: 'lodash',
+            amd: 'lodash',
+            root: '_',
         },
     },
 };
