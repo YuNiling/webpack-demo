@@ -25,5 +25,7 @@
     "webpack-merge": "^5.8.0",
     "xml-loader": "^1.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
